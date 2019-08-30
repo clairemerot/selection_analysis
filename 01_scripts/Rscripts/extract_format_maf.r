@@ -7,9 +7,10 @@ MIN_MAF <- argv[1]
 PERCENT_IND <- argv[2]
 POP<-argv[3]
 ANGSD_PATH<- argv[4]
+MAX_DEPTH_FACTOR<-argv[5]
 
 #read sites files
-sites<-read.table(paste0(ANGSD_PATH,"/02_info/sites_all_maf",MIN_MAF,"_pctind",PERCENT_IND), header=F)
+sites<-read.table(paste0(ANGSD_PATH,"/02_info/sites_all_maf",MIN_MAF,"_pctind",PERCENT_IND,"_maxdepth",MAX_DEPTH_FACTOR), header=F)
 colnames(sites)<-c("chromo", "position", "major", "minor")
 
 #read pop file
@@ -25,7 +26,7 @@ MAFall<-sites
 for (i in 1:npop)
   {
     pi<-pop[i,1]
-    MAFi<-read.delim(paste0(ANGSD_PATH,"/06_saf_maf_by_pop/",pi,"/",pi,"_maf",MIN_MAF,"_pctind",PERCENT_IND,".mafs"), header=T)
+    MAFi<-read.delim(paste0(ANGSD_PATH,"/06_saf_maf_by_pop/",pi,"/",pi,"_maf",MIN_MAF,"_pctind",PERCENT_IND,"_maxdepth",MAX_DEPTH_FACTOR,".mafs"), header=T)
     MAFi<-MAFi[,c(1,2,6,7)]
     colnames(MAFi)<-c("chromo", "position", paste("freq", pi, sep=""),paste("n", pi, sep=""))
     head(MAFi)
@@ -43,9 +44,9 @@ MAFall<-MAFall[which((rowSums(MAFall[,5:dim(MAFall)[2]])>=0)),]
 nSNP_no_na<-dim(MAFall)[1]
 print(paste("total nb of snp kept because they were covered in all populations by the chosen % of ind = ", dim(MAFall)[1]))
 
-write.table(MAFall, paste0("02_raw_data/by_",pop_group,"_",MIN_MAF,"_pctind",PERCENT_IND,".mafs"), quote=F, sep=" ")
+write.table(MAFall, paste0("02_raw_data/by_",pop_group,"_",MIN_MAF,"_pctind",PERCENT_IND,"_maxdepth",MAX_DEPTH_FACTOR,".mafs"), quote=F, sep=" ")
 #write the list of SNP infered in all populations
-write.table(MAFall[,1:4], paste0("02_raw_data/by_",pop_group,"_",MIN_MAF,"_pctind",PERCENT_IND,".snps"), quote=F, sep=" ")
+write.table(MAFall[,1:4], paste0("02_raw_data/by_",pop_group,"_",MIN_MAF,"_pctind",PERCENT_IND,"_maxdepth",MAX_DEPTH_FACTOR,".snps"), quote=F, sep=" ")
 
 
 
@@ -60,14 +61,14 @@ rownames(maf_matrix)<-paste(MAFall$chromo, MAFall$position, sep="_")
 head(maf_matrix)
 
 #for lfmm
-write.table(t(maf_matrix), paste0("04_lfmm/by_",pop_group,"_",MIN_MAF,"_pctind",PERCENT_IND,".lfmm"), quote=F, row.names = F, col.names = F)
+write.table(t(maf_matrix), paste0("04_lfmm/by_",pop_group,"_",MIN_MAF,"_pctind",PERCENT_IND,"_maxdepth",MAX_DEPTH_FACTOR,".lfmm"), quote=F, row.names = F, col.names = F)
 
 #for FLK add colnames
-write.table(maf_matrix, paste0("05_flk/by_",pop_group,"_",MIN_MAF,"_pctind",PERCENT_IND,".mafs.flkT"), quote=F, row.names = F)
+write.table(maf_matrix, paste0("05_flk/by_",pop_group,"_",MIN_MAF,"_pctind",PERCENT_IND,"_maxdepth",MAX_DEPTH_FACTOR,".mafs.flkT"), quote=F, row.names = F)
 #we would need also a matrix of reynolds distances? see ld-pruned methods, removing outliers,e tc
 
 #for rda add rownames
-write.table(maf_matrix, paste0("03_rda/by_",pop_group,"_",MIN_MAF,"_pctind",PERCENT_IND,".mafs.rda"), quote=F)
+write.table(maf_matrix, paste0("03_rda/by_",pop_group,"_",MIN_MAF,"_pctind",PERCENT_IND,"_maxdepth",MAX_DEPTH_FACTOR,".mafs.rda"), quote=F)
 
 
 #for Baypass
@@ -81,7 +82,7 @@ for (i in 1:npop)
 	BayPass_matrix[,(2*i)]<- round((1-MAFall[,4+(2*i-1)])*2*MAFall[,5+(2*i-1)],0)
 	}
 head(BayPass_matrix)
-write.table(BayPass_matrix, paste0("06_baypass/by_",pop_group,"_",MIN_MAF,"_pctind",PERCENT_IND,".mafs.baypass"), quote=F, row.names = F, col.names = F)
+write.table(BayPass_matrix, paste0("06_baypass/by_",pop_group,"_",MIN_MAF,"_pctind",PERCENT_IND,"_maxdepth",MAX_DEPTH_FACTOR,".mafs.baypass"), quote=F, row.names = F, col.names = F)
 
 ##I have somewhere a script to prepare the maf matrix for bayescan but bayescan is just too long to run on so many snps.
 

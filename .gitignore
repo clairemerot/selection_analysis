@@ -1,0 +1,16 @@
+*.gz
+*.fa
+*.fasta
+*.fastq
+*.bam
+*~
+log*
+02_raw_data/*
+03_rda/*
+04_lfmm/*
+05_flk/*
+06_baypass/*
+07_glm/*
+
+
+

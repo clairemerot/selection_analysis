@@ -9,3 +9,4 @@ POP1_FILE=$ANGSD_PATH/02_info/pop2.txt
 #parameter used as filter in angsd
 MIN_MAF=0.05
 PERCENT_IND=0.5
+MAX_DEPTH_FACTOR=3

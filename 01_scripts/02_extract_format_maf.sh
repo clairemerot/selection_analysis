@@ -5,5 +5,5 @@
 #to extract maf and gather all pop maf in one file (same as above)+ format them for rda & various analysis
 #it will aslo output in the list of snps for which maf was calculated in all populations (represented by the min % of IND given as filter
 source 01_scripts/01_config.sh
-Rscript 01_scripts/Rscripts/extract_format_maf.r "$MIN_MAF" "$PERCENT_IND" "$POP1_FILE" "$ANGSD_PATH"
+Rscript 01_scripts/Rscripts/extract_format_maf.r "$MIN_MAF" "$PERCENT_IND" "$POP1_FILE" "$ANGSD_PATH" "MAX_DEPTH_FACTOR"
 

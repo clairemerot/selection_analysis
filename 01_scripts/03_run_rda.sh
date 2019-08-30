@@ -19,35 +19,35 @@ ENV="4var_clim_FL_tide_depth"
 
 #run the Rscript rda
 source 01_scripts/01_config.sh
-Rscript 01_scripts/Rscripts/scriptRDA_katak.R "$MIN_MAF" "$PERCENT_IND" "$ENV"
+Rscript 01_scripts/Rscripts/scriptRDA_katak.R "$MIN_MAF" "$PERCENT_IND" "$ENV" "$MAX_DEPTH_FACTOR"
 
 
 ENV="7var"
 
 #run the Rscript rda
 source 01_scripts/01_config.sh
-Rscript 01_scripts/Rscripts/scriptRDA_katak.R "$MIN_MAF" "$PERCENT_IND" "$ENV"
+Rscript 01_scripts/Rscripts/scriptRDA_katak.R "$MIN_MAF" "$PERCENT_IND" "$ENV" "$MAX_DEPTH_FACTOR"
 
 ENV="bed_var"
 
 #run the Rscript rda
 source 01_scripts/01_config.sh
-Rscript 01_scripts/Rscripts/scriptRDA_katak.R "$MIN_MAF" "$PERCENT_IND" "$ENV"
+Rscript 01_scripts/Rscripts/scriptRDA_katak.R "$MIN_MAF" "$PERCENT_IND" "$ENV" "$MAX_DEPTH_FACTOR"
 
 ENV="clim_LF_bed"
 
 #run the Rscript rda
 source 01_scripts/01_config.sh
-Rscript 01_scripts/Rscripts/scriptRDA_katak.R "$MIN_MAF" "$PERCENT_IND" "$ENV"
+Rscript 01_scripts/Rscripts/scriptRDA_katak.R "$MIN_MAF" "$PERCENT_IND" "$ENV" "$MAX_DEPTH_FACTOR"
 
 ENV="clim_only"
 
 #run the Rscript rda
 source 01_scripts/01_config.sh
-Rscript 01_scripts/Rscripts/scriptRDA_katak.R "$MIN_MAF" "$PERCENT_IND" "$ENV"
+Rscript 01_scripts/Rscripts/scriptRDA_katak.R "$MIN_MAF" "$PERCENT_IND" "$ENV" "$MAX_DEPTH_FACTOR"
 
 ENV="LaminFucus"
 
 #run the Rscript rda
 source 01_scripts/01_config.sh
-Rscript 01_scripts/Rscripts/scriptRDA_katak.R "$MIN_MAF" "$PERCENT_IND" "$ENV"
+Rscript 01_scripts/Rscripts/scriptRDA_katak.R "$MIN_MAF" "$PERCENT_IND" "$ENV" "$MAX_DEPTH_FACTOR"

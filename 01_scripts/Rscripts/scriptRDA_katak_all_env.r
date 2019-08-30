@@ -6,8 +6,9 @@ argv <- commandArgs(T)
 MIN_MAF <- argv[1]
 PERCENT_IND <- argv[2]
 ENV<-argv[3]
+MAX_DEPTH_FACTOR<-argv[4]
 
-data_maf<-read.table(paste0("03_rda/by_pop_",MIN_MAF,"_pctind",PERCENT_IND,".mafs.rda"), header=TRUE)
+data_maf<-read.table(paste0("03_rda/by_pop_",MIN_MAF,"_pctind",PERCENT_IND,"_maxdepth",MAX_DEPTH_FACTOR,".mafs.rda"), header=TRUE)
 head(data_maf)
 
 
@@ -19,7 +20,7 @@ data_env<-read.table(paste0("03_rda/all_env/all_env_var/",ENV), header=TRUE)
 pop6rda<-rda(data_freq~., data=data_env, scale=T)
 pop6rda
 
-#look at R² and important axis
+#look at RÂ² and important axis
 RsquareAdj(pop6rda)
 summary(pop6rda)$concont
 

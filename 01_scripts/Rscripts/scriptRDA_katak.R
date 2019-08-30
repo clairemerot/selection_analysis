@@ -6,6 +6,7 @@ argv <- commandArgs(T)
 MIN_MAF <- argv[1]
 PERCENT_IND <- argv[2]
 folder<-argv[3]
+MAX_DEPTH_FACTOR<-argv[4]
 
 data_maf<-read.table(paste0("03_rda/by_pop_",MIN_MAF,"_pctind",PERCENT_IND,"_maxdepth",MAX_DEPTH_FACTOR,".mafs.rda"), header=TRUE)
 head(data_maf)

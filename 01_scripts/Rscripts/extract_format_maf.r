@@ -61,14 +61,15 @@ rownames(maf_matrix)<-paste(MAFall$chromo, MAFall$position, sep="_")
 head(maf_matrix)
 
 #for lfmm
-write.table(t(maf_matrix), paste0("04_lfmm/by_",pop_group,"_",MIN_MAF,"_pctind",PERCENT_IND,"_maxdepth",MAX_DEPTH_FACTOR,".lfmm"), quote=F, row.names = F, col.names = F)
+#write.table(t(maf_matrix), paste0("04_lfmm/by_",pop_group,"_",MIN_MAF,"_pctind",PERCENT_IND,"_maxdepth",MAX_DEPTH_FACTOR,".lfmm"), quote=F, row.names = F, col.names = F)
 
 #for FLK add colnames
 write.table(maf_matrix, paste0("05_flk/by_",pop_group,"_",MIN_MAF,"_pctind",PERCENT_IND,"_maxdepth",MAX_DEPTH_FACTOR,".mafs.flkT"), quote=F, row.names = F)
 #we would need also a matrix of reynolds distances? see ld-pruned methods, removing outliers,e tc
 
-#for rda add rownames
+#for rda add rownames - works for lfmm2 now!
 write.table(maf_matrix, paste0("03_rda/by_",pop_group,"_",MIN_MAF,"_pctind",PERCENT_IND,"_maxdepth",MAX_DEPTH_FACTOR,".mafs.rda"), quote=F)
+write.table(maf_matrix, paste0("04_lfmm/by_",pop_group,"_",MIN_MAF,"_pctind",PERCENT_IND,"_maxdepth",MAX_DEPTH_FACTOR,".mafs.rda"), quote=F)
 
 
 #for Baypass
